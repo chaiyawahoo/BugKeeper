@@ -20,6 +20,9 @@ public partial class BugDex : Node
 {
 	public override void _Ready()
 	{
+		BugDexEntry entry = new BugDexEntry();
+		entry.Name = "Big Bug";
+		GD.Print(entry.Name);
 	}
 	
 	public override void _Process(double delta)
@@ -40,7 +43,17 @@ public struct BugDexEntry
 		TimesCaught = 0;
 	}
 
-	public string Name;
+    public BugDexEntry(string name, string species, string description, string spritePath, string activeTimes) {
+        Name = name;
+        Species = species;
+        Description = description;
+        Sprite = ResourceLoader.Load<Sprite2D>(spritePath);
+		ActiveTimes = Enum.Parse<BugActiveTimes>(activeTimes);
+        CaughtStatus = BugCaughtStatus.Unseen;
+        TimesCaught = 0;
+    }
+
+    public string Name;
 	public string Species;
 	public string Description;
 	public Sprite2D Sprite;
