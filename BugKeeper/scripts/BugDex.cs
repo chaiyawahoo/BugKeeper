@@ -11,7 +11,8 @@ public partial class BugDex : Node
 	{
 		base._EnterTree();
 		BugDexEntryNode = ResourceLoader.Load<PackedScene>("res://scenes/bugDexEntry.tscn");
-	}
+		BugDexEntries = new List<BugDexEntry>();
+    }
 
     public override void _Ready()
     {
