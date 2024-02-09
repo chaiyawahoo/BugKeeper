@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkv257gh8muvm"
-path="res://.godot/imported/morningSchedule.png-e436b6ec59cb24cffc7ba3f16c8db77c.ctex"
+uid="uid://cn8abntmhbf4l"
+path="res://.godot/imported/BugScheduleIcons.png-f8ab018e8af8728fbadaf0e8536ed6cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bugdex/morningSchedule.png"
-dest_files=["res://.godot/imported/morningSchedule.png-e436b6ec59cb24cffc7ba3f16c8db77c.ctex"]
+source_file="res://art/bugdex/png/BugScheduleIcons.png"
+dest_files=["res://.godot/imported/BugScheduleIcons.png-f8ab018e8af8728fbadaf0e8536ed6cb.ctex"]
 
 [params]
 

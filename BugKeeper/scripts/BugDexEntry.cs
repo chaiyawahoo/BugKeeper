@@ -51,26 +51,6 @@ public partial class BugDexEntry : Control
     public BugCaughtStatus CaughtStatus;
     public int TimesCaught;
 
-    //public BugDexEntry() {
-    //    BugName = "name";
-    //    Species = "species";
-    //    Description = "description";
-    //    Sprite = new Sprite2D();
-    //    Schedule = BugSchedule.Never;
-    //    CaughtStatus = BugCaughtStatus.Unseen;
-    //    TimesCaught = 0;
-    //}
-
-    //public BugDexEntry(string name, string species, string description, string spritePath, string schedule) {
-    //    BugName = name;
-    //    Species = species;
-    //    Description = description;
-    //    Sprite = ResourceLoader.Load<Sprite2D>(spritePath);
-    //    Schedule = Enum.Parse<BugSchedule>(schedule);
-    //    CaughtStatus = BugCaughtStatus.Unseen;
-    //    TimesCaught = 0;
-    //}
-
     public void See() {
         CaughtStatus = BugCaughtStatus.Seen;
     }

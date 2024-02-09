@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://rroa35atcmbe"]
+[gd_scene load_steps=10 format=3 uid="uid://rroa35atcmbe"]
 
 [ext_resource type="Script" path="res://scripts/BugDexEntry.cs" id="1_a17ey"]
+[ext_resource type="Texture2D" uid="uid://baw3u0g32a88t" path="res://art/bugdex/textures/ActiveMorning.tres" id="2_apokp"]
+[ext_resource type="Texture2D" uid="uid://srdjqfxlnxhh" path="res://art/bugdex/textures/ActiveDay.tres" id="3_1dvfe"]
+[ext_resource type="Texture2D" uid="uid://bk0cw276ntdep" path="res://art/bugdex/textures/ActiveEvening.tres" id="4_xbmpt"]
+[ext_resource type="Texture2D" uid="uid://d3o7ntk4moybh" path="res://art/bugdex/textures/ActiveNight.tres" id="5_r6ptp"]
+[ext_resource type="Texture2D" uid="uid://mylvv0gmsja7" path="res://art/bugdex/textures/InactiveMorning.tres" id="6_rqisc"]
+[ext_resource type="Texture2D" uid="uid://bh4nlf4iue31g" path="res://art/bugdex/textures/InactiveDay.tres" id="7_pi3gb"]
+[ext_resource type="Texture2D" uid="uid://c5o3oeswo55bq" path="res://art/bugdex/textures/InactiveEvening.tres" id="8_j7pk3"]
+[ext_resource type="Texture2D" uid="uid://trwsyg6dopyt" path="res://art/bugdex/textures/InactiveNight.tres" id="9_4an4d"]
 
 [node name="BugDexEntry" type="Control"]
 layout_mode = 3
@@ -10,3 +18,74 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a17ey")
+
+[node name="BugSchedule" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="ActiveMorning" type="TextureRect" parent="BugSchedule"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_apokp")
+expand_mode = 3
+
+[node name="ActiveDay" type="TextureRect" parent="BugSchedule"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("3_1dvfe")
+expand_mode = 3
+
+[node name="ActiveEvening" type="TextureRect" parent="BugSchedule"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+texture = ExtResource("4_xbmpt")
+expand_mode = 3
+
+[node name="ActiveNight" type="TextureRect" parent="BugSchedule"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+texture = ExtResource("5_r6ptp")
+expand_mode = 3
+
+[node name="InactiveMorning" type="TextureRect" parent="BugSchedule"]
+visible = false
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("6_rqisc")
+expand_mode = 3
+
+[node name="InactiveDay" type="TextureRect" parent="BugSchedule"]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("7_pi3gb")
+expand_mode = 3
+
+[node name="InactiveEvening" type="TextureRect" parent="BugSchedule"]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+texture = ExtResource("8_j7pk3")
+expand_mode = 3
+
+[node name="InactiveNight" type="TextureRect" parent="BugSchedule"]
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+texture = ExtResource("9_4an4d")
+expand_mode = 3
