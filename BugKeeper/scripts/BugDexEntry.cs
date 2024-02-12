@@ -48,7 +48,7 @@ public partial class BugDexEntry : Control
     [Export]
     public Sprite2D Sprite;
     [Export]
-    public BugSchedule ActiveTimes;
+    public BugSchedule ActiveSchedule;
     [Export]
     public BugCaughtStatus CaughtStatus;
 
@@ -76,10 +76,10 @@ public partial class BugDexEntry : Control
         TimesCaught++;
     }
 
-    private void ToggleScheduleIcon(BugSchedule time, bool active)
+    private void ToggleScheduleIcon(BugSchedule schedule, bool active)
     {
-        Control activeIcon = (Control)bugScheduleIcons.FindChild("Active" + time.ToString());
-        Control inactiveIcon = (Control)bugScheduleIcons.FindChild("Inactive" + time.ToString());
+        Control activeIcon = (Control)bugScheduleIcons.FindChild("Active" + schedule.ToString());
+        Control inactiveIcon = (Control)bugScheduleIcons.FindChild("Inactive" + schedule.ToString());
         if (active)
         {
             activeIcon.Visible = true;
@@ -96,9 +96,9 @@ public partial class BugDexEntry : Control
     {
         for (int i = 0; i < 4; i++)
         {
-            BugSchedule time = (BugSchedule)(1 << i);
-            bool isActive = (ActiveTimes & time) == time;
-            ToggleScheduleIcon(time, isActive);
+            BugSchedule schedule = (BugSchedule)(1 << i);
+            bool isActive = (ActiveSchedule & schedule) == schedule;
+            ToggleScheduleIcon(schedule, isActive);
         }
     }
 }
