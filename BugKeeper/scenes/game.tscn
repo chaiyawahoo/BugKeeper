@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqx0jtgr2a5mw"]
+[gd_scene load_steps=3 format=3 uid="uid://dqx0jtgr2a5mw"]
 
-[ext_resource type="Script" path="res://scripts/BugDex.cs" id="1_b7jxp"]
+[ext_resource type="PackedScene" uid="uid://baw0macsmuklc" path="res://scenes/bugDex.tscn" id="1_huf8c"]
+[ext_resource type="PackedScene" uid="uid://rroa35atcmbe" path="res://scenes/bugDexEntry.tscn" id="2_1csby"]
 
 [node name="Game" type="Node2D"]
 
-[node name="BugDex" type="Node2D" parent="."]
-script = ExtResource("1_b7jxp")
+[node name="BugDex" parent="." instance=ExtResource("1_huf8c")]
+
+[node name="BugDexEntry" parent="BugDex" instance=ExtResource("2_1csby")]
+layout_mode = 1
