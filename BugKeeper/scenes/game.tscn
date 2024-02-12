@@ -6,7 +6,24 @@
 [node name="Game" type="Node2D"]
 
 [node name="BugDex" parent="." instance=ExtResource("1_huf8c")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="BugDexEntry" parent="BugDex" instance=ExtResource("2_1csby")]
-layout_mode = 1
+layout_mode = 0
 ActiveSchedule = 3
+
+[node name="BugDexEntry2" parent="BugDex" instance=ExtResource("2_1csby")]
+layout_mode = 0
+offset_top = 64.0
+offset_bottom = 64.0
+ActiveSchedule = 12
+
+[node name="BugDexEntry3" parent="BugDex" instance=ExtResource("2_1csby")]
+layout_mode = 0
+offset_top = 128.0
+offset_bottom = 128.0
+ActiveSchedule = 5

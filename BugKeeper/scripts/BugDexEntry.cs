@@ -36,6 +36,8 @@ public enum BugSchedule
 
 public partial class BugDexEntry : Control
 {
+    private const string BUGDEX_TEXTURES_PATH = "res://art/bugdex/textures/";
+
     [ExportGroup("Bug Information")]
     [Export]
     public string BugName;
@@ -57,46 +59,59 @@ public partial class BugDexEntry : Control
     private Control bugScheduleIcons;
 
     private static bool texturesLoaded = false;
+    private static bool texturesRequested = false;
     private static AtlasTexture[] activeIconTextures;
     private static AtlasTexture[] inactiveIconTextures;
 
     BugDexEntry()
     {
-        if (!texturesLoaded)
+        if (!texturesRequested)
         {
             activeIconTextures = new AtlasTexture[4];
             inactiveIconTextures = new AtlasTexture[4];
             for (int i = 0; i < 4; i++)
             {
                 BugSchedule schedule = (BugSchedule)(1 << i);
-                activeIconTextures[i] = ResourceLoader.Load<AtlasTexture>("res://art/bugdex/textures/Active" + schedule.ToString() + ".tres");
-                inactiveIconTextures[i] = ResourceLoader.Load<AtlasTexture>("res://art/bugdex/textures/Inactive" + schedule.ToString() + ".tres");
+                ResourceLoader.LoadThreadedRequest(BUGDEX_TEXTURES_PATH + "Active" + schedule + ".tres");
+                ResourceLoader.LoadThreadedRequest(BUGDEX_TEXTURES_PATH + "Inactive" + schedule + ".tres");
             }
-            texturesLoaded = true;
+            texturesRequested = true;
         }
     }
 
     public override void _Ready()
     {
+        GD.Print(Name);
         TimesCaught = 0;
-        bugScheduleIcons = new Control();
-        bugScheduleIcons.Name = "BugSchedule";
-        bugScheduleIcons.Size = new Vector2I(256, 64);
+        bugScheduleIcons = new Control
+        {
+            Name = "BugSchedule",
+            Size = new Vector2I(256, 64)
+        };
         AddChild(bugScheduleIcons, forceReadableName: true);
 
         for (int i = 0; i < 4; i++)
         {
             BugSchedule schedule = (BugSchedule)(1 << i);
             bool isActive = (ActiveSchedule & schedule) == schedule;
+            if (!texturesLoaded)
+            {
+                activeIconTextures[i] = (AtlasTexture)ResourceLoader.LoadThreadedGet(BUGDEX_TEXTURES_PATH + "Active" + schedule + ".tres");
+                inactiveIconTextures[i] = (AtlasTexture)ResourceLoader.LoadThreadedGet(BUGDEX_TEXTURES_PATH + "Inactive" + schedule + ".tres");
+            }
             AtlasTexture iconTexture = isActive ? activeIconTextures[i] : inactiveIconTextures[i];
-            TextureRect scheduleIcon = new TextureRect();
-            scheduleIcon.Texture = iconTexture;
-            scheduleIcon.ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional;
-            scheduleIcon.Size = new Vector2I(64, 64);
-            scheduleIcon.Position = new Vector2I(i * 64, 0);
-            scheduleIcon.Name = schedule.ToString() + "Schedule";
+            TextureRect scheduleIcon = new()
+            {
+                Texture = iconTexture,
+                ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional,
+                Size = new Vector2I(64, 64),
+                Position = new Vector2I(i * 64, 0),
+                Name = schedule.ToString() + "Schedule"
+            };
             bugScheduleIcons.AddChild(scheduleIcon, forceReadableName: true);
         }
+
+        if (!texturesLoaded) texturesLoaded = true;
     }
 
     public void See()
