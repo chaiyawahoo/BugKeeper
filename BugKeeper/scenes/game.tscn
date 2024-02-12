@@ -9,3 +9,4 @@
 
 [node name="BugDexEntry" parent="BugDex" instance=ExtResource("2_1csby")]
 layout_mode = 1
+ActiveSchedule = 3

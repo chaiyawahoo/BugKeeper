@@ -54,15 +54,49 @@ public partial class BugDexEntry : Control
 
     public int TimesCaught;
 
-    private Node bugScheduleIcons;
+    private Control bugScheduleIcons;
 
+    private static bool texturesLoaded = false;
+    private static AtlasTexture[] activeIconTextures;
+    private static AtlasTexture[] inactiveIconTextures;
+
+    BugDexEntry()
+    {
+        if (!texturesLoaded)
+        {
+            activeIconTextures = new AtlasTexture[4];
+            inactiveIconTextures = new AtlasTexture[4];
+            for (int i = 0; i < 4; i++)
+            {
+                BugSchedule schedule = (BugSchedule)(1 << i);
+                activeIconTextures[i] = ResourceLoader.Load<AtlasTexture>("res://art/bugdex/textures/Active" + schedule.ToString() + ".tres");
+                inactiveIconTextures[i] = ResourceLoader.Load<AtlasTexture>("res://art/bugdex/textures/Inactive" + schedule.ToString() + ".tres");
+            }
+            texturesLoaded = true;
+        }
+    }
 
     public override void _Ready()
     {
         TimesCaught = 0;
-        bugScheduleIcons = FindChild("BugSchedule");
+        bugScheduleIcons = new Control();
+        bugScheduleIcons.Name = "BugSchedule";
+        bugScheduleIcons.Size = new Vector2I(256, 64);
+        AddChild(bugScheduleIcons, forceReadableName: true);
 
-        UpdateScheduleIcons();
+        for (int i = 0; i < 4; i++)
+        {
+            BugSchedule schedule = (BugSchedule)(1 << i);
+            bool isActive = (ActiveSchedule & schedule) == schedule;
+            AtlasTexture iconTexture = isActive ? activeIconTextures[i] : inactiveIconTextures[i];
+            TextureRect scheduleIcon = new TextureRect();
+            scheduleIcon.Texture = iconTexture;
+            scheduleIcon.ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional;
+            scheduleIcon.Size = new Vector2I(64, 64);
+            scheduleIcon.Position = new Vector2I(i * 64, 0);
+            scheduleIcon.Name = schedule.ToString() + "Schedule";
+            bugScheduleIcons.AddChild(scheduleIcon, forceReadableName: true);
+        }
     }
 
     public void See()
@@ -74,31 +108,5 @@ public partial class BugDexEntry : Control
     {
         CaughtStatus = BugCaughtStatus.Caught;
         TimesCaught++;
-    }
-
-    private void ToggleScheduleIcon(BugSchedule schedule, bool active)
-    {
-        Control activeIcon = (Control)bugScheduleIcons.FindChild("Active" + schedule.ToString());
-        Control inactiveIcon = (Control)bugScheduleIcons.FindChild("Inactive" + schedule.ToString());
-        if (active)
-        {
-            activeIcon.Visible = true;
-            inactiveIcon.Visible = false;
-        }
-        else
-        {
-            inactiveIcon.Visible = true;
-            activeIcon.Visible = false;
-        }
-    }
-
-    private void UpdateScheduleIcons()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            BugSchedule schedule = (BugSchedule)(1 << i);
-            bool isActive = (ActiveSchedule & schedule) == schedule;
-            ToggleScheduleIcon(schedule, isActive);
-        }
     }
 }
