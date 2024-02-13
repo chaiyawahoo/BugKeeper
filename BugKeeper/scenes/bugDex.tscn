@@ -46,6 +46,7 @@ dragger_visibility = 1
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_gop42")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/HSplitContainer/PanelContainer"]
 layout_direction = 3
@@ -74,6 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_gop42")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HSplitContainer/Control/PanelContainer"]
 layout_mode = 2

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class BugDex : Node
+public partial class BugDex : Control
 {
 	public PackedScene BugDexEntryNode;
 	public List<BugDexEntry> BugDexEntries;
