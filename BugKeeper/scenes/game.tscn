@@ -1,29 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqx0jtgr2a5mw"]
+[gd_scene load_steps=2 format=3 uid="uid://dqx0jtgr2a5mw"]
 
 [ext_resource type="PackedScene" uid="uid://baw0macsmuklc" path="res://scenes/bugDex.tscn" id="1_huf8c"]
-[ext_resource type="PackedScene" uid="uid://rroa35atcmbe" path="res://scenes/bugDexEntry.tscn" id="2_1csby"]
 
 [node name="Game" type="Node2D"]
 
 [node name="BugDex" parent="." instance=ExtResource("1_huf8c")]
 anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="BugDexEntry" parent="BugDex" instance=ExtResource("2_1csby")]
-layout_mode = 0
-ActiveSchedule = 3
-
-[node name="BugDexEntry2" parent="BugDex" instance=ExtResource("2_1csby")]
-layout_mode = 0
-offset_top = 64.0
-offset_bottom = 64.0
-ActiveSchedule = 12
-
-[node name="BugDexEntry3" parent="BugDex" instance=ExtResource("2_1csby")]
-layout_mode = 0
-offset_top = 128.0
-offset_bottom = 128.0
-ActiveSchedule = 5

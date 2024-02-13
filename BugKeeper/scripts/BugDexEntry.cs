@@ -30,6 +30,9 @@ public enum BugSchedule
     Early = Morning | Day,
     Late = Evening | Night,
 
+    Dreamy = Morning | Night,
+    Lazy = Day | Evening,
+
     Always = Morning | Day | Evening | Night,
     Cathemeral = Always
 }
@@ -81,7 +84,6 @@ public partial class BugDexEntry : Control
 
     public override void _Ready()
     {
-        GD.Print(Name);
         TimesCaught = 0;
         bugScheduleIcons = new Control
         {
