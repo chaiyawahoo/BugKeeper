@@ -102,15 +102,19 @@ public partial class BugDexEntry : Control
                 inactiveIconTextures[i] = (AtlasTexture)ResourceLoader.LoadThreadedGet(BUGDEX_TEXTURES_PATH + "Inactive" + schedule + ".tres");
             }
             AtlasTexture iconTexture = isActive ? activeIconTextures[i] : inactiveIconTextures[i];
+            MarginContainer iconMargin = new MarginContainer()
+            {
+                Size = new Vector2I(64, 64),
+                Position = new Vector2I(i * 64, 0)
+            };
             TextureRect scheduleIcon = new()
             {
                 Texture = iconTexture,
                 ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional,
-                Size = new Vector2I(64, 64),
-                Position = new Vector2I(i * 64, 0),
                 Name = schedule.ToString() + "Schedule"
             };
-            bugScheduleIcons.AddChild(scheduleIcon, forceReadableName: true);
+            iconMargin.AddChild(scheduleIcon, forceReadableName: true);
+            bugScheduleIcons.AddChild(iconMargin);
         }
 
         if (!texturesLoaded) texturesLoaded = true;
