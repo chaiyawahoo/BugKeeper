@@ -51,7 +51,7 @@ public partial class BugDexEntry : Control
 
     [ExportGroup("")]
     [Export]
-    public Sprite2D Sprite;
+    public Texture2D Sprite;
     [Export]
     public BugSchedule ActiveSchedule;
     [Export]
@@ -85,12 +85,6 @@ public partial class BugDexEntry : Control
     public override void _Ready()
     {
         TimesCaught = 0;
-        bugScheduleIcons = new Control
-        {
-            Name = "BugSchedule",
-            Size = new Vector2I(256, 64)
-        };
-        AddChild(bugScheduleIcons, forceReadableName: true);
 
         for (int i = 0; i < 4; i++)
         {
@@ -102,19 +96,11 @@ public partial class BugDexEntry : Control
                 inactiveIconTextures[i] = (AtlasTexture)ResourceLoader.LoadThreadedGet(BUGDEX_TEXTURES_PATH + "Inactive" + schedule + ".tres");
             }
             AtlasTexture iconTexture = isActive ? activeIconTextures[i] : inactiveIconTextures[i];
-            MarginContainer iconMargin = new MarginContainer()
-            {
-                Size = new Vector2I(64, 64),
-                Position = new Vector2I(i * 64, 0)
-            };
-            TextureRect scheduleIcon = new()
-            {
-                Texture = iconTexture,
-                ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional,
-                Name = schedule.ToString() + "Schedule"
-            };
-            iconMargin.AddChild(scheduleIcon, forceReadableName: true);
-            bugScheduleIcons.AddChild(iconMargin);
+            TextureRect scheduleIcon = GetNode<TextureRect>("%" + schedule + "Schedule");
+            GetNode<TextureRect>("%BugSprite").Texture = Sprite;
+            GetNode<RichTextLabel>("%BugName").Text = BugName;
+            GetNode<TextEdit>("%Description").Text = Description;
+            scheduleIcon.Texture = iconTexture;
         }
 
         if (!texturesLoaded) texturesLoaded = true;

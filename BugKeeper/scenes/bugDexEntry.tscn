@@ -2,7 +2,79 @@
 
 [ext_resource type="Script" path="res://scripts/BugDexEntry.cs" id="1_a17ey"]
 
-[node name="BugDexEntry" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="BugDexEntry" type="VBoxContainer"]
 script = ExtResource("1_a17ey")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BugName" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bug Name"
+fit_content = true
+
+[node name="BugSpecies" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[i]Bug Species[/i]"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MorningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 4
+
+[node name="DaySchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 4
+
+[node name="EveningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 4
+
+[node name="NightSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 4
+
+[node name="BugSprite" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 5
+
+[node name="Description" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Description"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1

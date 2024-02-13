@@ -19,7 +19,10 @@ public partial class BugDex : Node
             BugDexEntry newEntryNode = BugDexEntryNode.Instantiate<BugDexEntry>();
 			newEntryNode.BugName = (BugSchedule)i + " Bug";
 			newEntryNode.Name = newEntryNode.BugName;
+			newEntryNode.Species = "Buggus Specius (" + (BugSchedule)i + ")";
+			newEntryNode.Description = "This bug's schedule can be described with a word: " + (BugSchedule)i;
 			newEntryNode.ActiveSchedule = (BugSchedule)i;
+			ResourceLoader.LoadThreadedRequest("res://art/bugdex/textures/ActiveDay.tres");
 			newEntryNode.SetMeta("index", i);
             BugDexEntries.Add(newEntryNode);
         }
@@ -35,6 +38,7 @@ public partial class BugDex : Node
 			{
 				Text = entry.BugName
 			};
+			entry.Sprite = (Texture2D)ResourceLoader.LoadThreadedGet("res://art/bugdex/textures/ActiveDay.tres");
 			bugButton.Connect("pressed", Callable.From(() => bugInfo.CurrentTab = (int)entry.GetMeta("index")));
 			bugSelector.AddChild(bugButton);
 			bugInfo.AddChild(entry);

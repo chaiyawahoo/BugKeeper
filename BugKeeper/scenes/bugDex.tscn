@@ -24,38 +24,47 @@ grow_vertical = 2
 theme = SubResource("Theme_j86xm")
 script = ExtResource("1_2akw5")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
-layout_mode = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -300.0
 offset_top = -200.0
 offset_right = 300.0
 offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 split_offset = 150
 
-[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/HSplitContainer/PanelContainer"]
 layout_direction = 3
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/PanelContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HSplitContainer/PanelContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BugSelector" type="VBoxContainer" parent="HSplitContainer/PanelContainer/ScrollContainer/MarginContainer"]
+[node name="BugSelector" type="VBoxContainer" parent="HBoxContainer/HSplitContainer/PanelContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="HSplitContainer"]
+[node name="Control" type="Control" parent="HBoxContainer/HSplitContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/Control"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HSplitContainer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,10 +72,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HSplitContainer/Control/PanelContainer"]
 layout_mode = 2
 
-[node name="BugInfo" type="TabContainer" parent="HSplitContainer/Control/PanelContainer/MarginContainer"]
+[node name="BugInfo" type="TabContainer" parent="HBoxContainer/HSplitContainer/Control/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 tabs_visible = false
