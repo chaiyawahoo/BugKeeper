@@ -1,10 +1,18 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bhprq1njjsmhy"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bhprq1njjsmhy"]
+
+[ext_resource type="FontFile" uid="uid://b1nwfo7yep0mm" path="res://ui/fonts/dogica/OTF/dogicapixelbold.otf" id="1_idg6l"]
+[ext_resource type="FontFile" uid="uid://evx4y57tpsvl" path="res://ui/fonts/dogica/OTF/dogicapixel.otf" id="2_hu3wh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfn3h"]
 
 [resource]
+default_font = ExtResource("2_hu3wh")
+Button/font_sizes/font_size = 14
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5
 MarginContainer/constants/margin_top = 5
+RichTextLabel/constants/line_separation = 4
+RichTextLabel/fonts/bold_font = ExtResource("1_idg6l")
+RichTextLabel/fonts/normal_font = ExtResource("2_hu3wh")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_qfn3h")

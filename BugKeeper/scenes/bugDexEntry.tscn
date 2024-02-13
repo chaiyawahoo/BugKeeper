@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://rroa35atcmbe"]
+[gd_scene load_steps=7 format=3 uid="uid://rroa35atcmbe"]
 
 [ext_resource type="Script" path="res://scripts/BugDexEntry.cs" id="1_a17ey"]
+[ext_resource type="Texture2D" uid="uid://baw3u0g32a88t" path="res://art/bugdex/textures/ActiveMorning.tres" id="2_kwat1"]
+[ext_resource type="Texture2D" uid="uid://srdjqfxlnxhh" path="res://art/bugdex/textures/ActiveDay.tres" id="3_2a7s2"]
+[ext_resource type="Texture2D" uid="uid://bk0cw276ntdep" path="res://art/bugdex/textures/ActiveEvening.tres" id="4_qibvi"]
+[ext_resource type="Texture2D" uid="uid://d3o7ntk4moybh" path="res://art/bugdex/textures/ActiveNight.tres" id="5_2erdd"]
+[ext_resource type="Theme" uid="uid://bhprq1njjsmhy" path="res://ui/themes/BugDexTheme.tres" id="6_lfs0n"]
 
 [node name="BugDexEntry" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_a17ey")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -16,65 +26,83 @@ size_flags_horizontal = 3
 [node name="BugName" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_lfs0n")
 text = "Bug Name"
 fit_content = true
 
 [node name="BugSpecies" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("6_lfs0n")
 bbcode_enabled = true
 text = "[i]Bug Species[/i]"
 fit_content = true
+autowrap_mode = 2
+custom_effects = [null]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="MorningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("2_kwat1")
+expand_mode = 4
 stretch_mode = 4
 
 [node name="DaySchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("3_2a7s2")
+expand_mode = 4
 stretch_mode = 4
 
 [node name="EveningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("4_qibvi")
+expand_mode = 4
 stretch_mode = 4
 
 [node name="NightSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("5_2erdd")
+expand_mode = 4
 stretch_mode = 4
 
-[node name="BugSprite" type="TextureRect" parent="HBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-stretch_mode = 5
+alignment = 2
 
-[node name="Description" type="TextEdit" parent="."]
+[node name="BugSprite" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("3_2a7s2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_lfs0n")
 text = "Description"
-editable = false
-context_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-wrap_mode = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2

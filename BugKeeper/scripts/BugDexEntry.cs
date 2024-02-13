@@ -85,7 +85,15 @@ public partial class BugDexEntry : Control
     public override void _Ready()
     {
         TimesCaught = 0;
-
+        GetNode<TextureRect>("%BugSprite").Texture = Sprite;
+        GetNode<RichTextLabel>("%BugName").Text = BugName;
+        RichTextLabel speciesLabel = GetNode<RichTextLabel>("%BugSpecies");
+        speciesLabel.Text = "";
+        speciesLabel.PushFontSize(14);
+        speciesLabel.PushColor(Colors.LightGray);
+        speciesLabel.PushItalics();
+        speciesLabel.AddText(Species);
+        GetNode<RichTextLabel>("%Description").Text = Description;
         for (int i = 0; i < 4; i++)
         {
             BugSchedule schedule = (BugSchedule)(1 << i);
@@ -97,9 +105,6 @@ public partial class BugDexEntry : Control
             }
             AtlasTexture iconTexture = isActive ? activeIconTextures[i] : inactiveIconTextures[i];
             TextureRect scheduleIcon = GetNode<TextureRect>("%" + schedule + "Schedule");
-            GetNode<TextureRect>("%BugSprite").Texture = Sprite;
-            GetNode<RichTextLabel>("%BugName").Text = BugName;
-            GetNode<TextEdit>("%Description").Text = Description;
             scheduleIcon.Texture = iconTexture;
         }
 
