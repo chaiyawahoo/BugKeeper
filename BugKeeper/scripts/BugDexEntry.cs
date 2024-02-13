@@ -30,8 +30,8 @@ public enum BugSchedule
     Early = Morning | Day,
     Late = Evening | Night,
 
-    Dreamy = Morning | Night,
-    Lazy = Day | Evening,
+    Party = Morning | Night,
+    Worker = Day | Evening,
 
     Always = Morning | Day | Evening | Night,
     Cathemeral = Always
