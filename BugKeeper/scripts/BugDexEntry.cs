@@ -86,16 +86,8 @@ public partial class BugDexEntry : Control
     {
         TimesCaught = 0;
         GetNode<TextureRect>("%BugSprite").Texture = Sprite;
-        RichTextLabel nameLabel = GetNode<RichTextLabel>("%BugName");
-        nameLabel.Text = "";
-        nameLabel.PushBold();
-        nameLabel.AddText(BugName);
-        RichTextLabel speciesLabel = GetNode<RichTextLabel>("%BugSpecies");
-        speciesLabel.Text = "";
-        speciesLabel.PushFontSize(14);
-        speciesLabel.PushColor(Color.Color8(64, 64, 64));
-        speciesLabel.PushItalics();
-        speciesLabel.AddText(Species);
+        GetNode<Label>("%BugName").Text = BugName;
+        GetNode<Label>("%BugSpecies").Text = Species;
         GetNode<RichTextLabel>("%Description").Text = Description;
         for (int i = 0; i < 4; i++)
         {
