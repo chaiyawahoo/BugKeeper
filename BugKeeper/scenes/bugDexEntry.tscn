@@ -59,14 +59,18 @@ autowrap_mode = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MorningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MorningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_kwat1")
 stretch_mode = 4
 
-[node name="DaySchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="DaySchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -74,7 +78,7 @@ texture = ExtResource("3_2a7s2")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="EveningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="EveningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -82,13 +86,17 @@ texture = ExtResource("4_qibvi")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="NightSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="NightSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("5_2erdd")
 expand_mode = 4
 stretch_mode = 4
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
