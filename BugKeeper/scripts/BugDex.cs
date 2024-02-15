@@ -59,6 +59,10 @@ public partial class BugDex : Control
 			entry.Sprite = (Texture2D)ResourceLoader.LoadThreadedGet(entry.SpritePath);
             GD.Print(entry.Sprite.ResourceName);
 			bugButton.Connect("pressed", Callable.From(() => bugInfo.CurrentTab = (int)entry.GetMeta("index")));
+			if ((int)entry.GetMeta("index") == 0)
+			{
+				bugButton.ButtonPressed = true;
+			}
 			bugSelector.AddChild(bugButton);
 			bugInfo.AddChild(entry);
         }
