@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://rroa35atcmbe"]
+
+[ext_resource type="Script" path="res://scripts/BugDexEntry.cs" id="1_a17ey"]
+[ext_resource type="Texture2D" uid="uid://baw3u0g32a88t" path="res://art/bugdex/textures/ActiveMorning.tres" id="2_kwat1"]
+[ext_resource type="FontFile" uid="uid://b1nwfo7yep0mm" path="res://ui/fonts/dogica/OTF/dogicapixelbold.otf" id="2_u1fth"]
+[ext_resource type="Texture2D" uid="uid://srdjqfxlnxhh" path="res://art/bugdex/textures/ActiveDay.tres" id="3_2a7s2"]
+[ext_resource type="FontFile" uid="uid://evx4y57tpsvl" path="res://ui/fonts/dogica/OTF/dogicapixel.otf" id="3_26cs1"]
+[ext_resource type="Texture2D" uid="uid://bk0cw276ntdep" path="res://art/bugdex/textures/ActiveEvening.tres" id="4_qibvi"]
+[ext_resource type="Texture2D" uid="uid://d3o7ntk4moybh" path="res://art/bugdex/textures/ActiveNight.tres" id="5_2erdd"]
+[ext_resource type="Theme" uid="uid://bhprq1njjsmhy" path="res://ui/themes/BugDexTheme.tres" id="6_lfs0n"]
+[ext_resource type="StyleBox" uid="uid://boi75i8gbt6wl" path="res://ui/themes/styleboxes/BGMedium.tres" id="7_6yy1y"]
+[ext_resource type="Texture2D" uid="uid://cbkj8rovcol4d" path="res://art/bugdex/bugs/grounded/grounded1.tres" id="8_5ca4c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_678an"]
+font = ExtResource("2_u1fth")
+font_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_24do1"]
+font = ExtResource("3_26cs1")
+font_size = 14
+font_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[node name="BugDexEntry" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a17ey")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BugName" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Species"
+label_settings = SubResource("LabelSettings_678an")
+autowrap_mode = 3
+
+[node name="BugSpecies" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Species"
+label_settings = SubResource("LabelSettings_24do1")
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MorningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_kwat1")
+stretch_mode = 4
+
+[node name="DaySchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_2a7s2")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="EveningSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_qibvi")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="NightSchedule" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_2erdd")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_lfs0n")
+theme_override_styles/panel = ExtResource("7_6yy1y")
+
+[node name="BugSprite" type="TextureRect" parent="HBoxContainer/HBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("8_5ca4c")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("7_6yy1y")
+
+[node name="Description" type="RichTextLabel" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_lfs0n")
+text = "Description"

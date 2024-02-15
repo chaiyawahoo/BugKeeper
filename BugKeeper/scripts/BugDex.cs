@@ -1,63 +1,75 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Array = Godot.Collections.Array;
 
-public enum BugCaughtStatus {
-	Unseen,
-	Seen,
-	Caught
-}
-
-public enum BugActiveTimes {
-	Never = 0,
-	Morning = 1,
-	Day = 2,
-	Evening = 4,
-	Night = 8,
-	Always = 15
-}
-
-public partial class BugDex : Node
+public partial class BugDex : Control
 {
-	public override void _Ready()
-	{
-		BugDexEntry entry = new BugDexEntry();
-		entry.Name = "Big Bug";
-		GD.Print(entry.Name);
-	}
-	
-	public override void _Process(double delta)
-	{
-	}
-}
+	public PackedScene BugDexEntryNode;
+	public List<BugDexEntry> BugDexEntries;
 
-public struct BugDexEntry 
-{
-	public BugDexEntry()
+	private TabContainer bugInfo;
+	private VBoxContainer bugSelector;
+	public override void _EnterTree()
 	{
-		Name = "name";
-		Species = "species";
-		Description = "description";
-		Sprite = new Sprite2D();
-		ActiveTimes = BugActiveTimes.Never;
-		CaughtStatus = BugCaughtStatus.Unseen;
-		TimesCaught = 0;
-	}
+        BugDexEntryNode = ResourceLoader.Load<PackedScene>("res://scenes/bugDexEntry.tscn");
+        BugDexEntries = new List<BugDexEntry>();
 
-    public BugDexEntry(string name, string species, string description, string spritePath, string activeTimes) {
-        Name = name;
-        Species = species;
-        Description = description;
-        Sprite = ResourceLoader.Load<Sprite2D>(spritePath);
-		ActiveTimes = Enum.Parse<BugActiveTimes>(activeTimes);
-        CaughtStatus = BugCaughtStatus.Unseen;
-        TimesCaught = 0;
+        string bugJson = FileAccess.GetFileAsString("res://bugs.json");
+		Dictionary bugData = (Dictionary)Json.ParseString(bugJson);
+		Dictionary bugTypes = (Dictionary)bugData["bugs"];
+		Array ants = (Array)bugTypes["ants"];
+		Array spiders = (Array)bugTypes["spiders"];
+		Array bugArray = new Array();
+		bugArray += ants + spiders;
+        ResourceLoader.LoadThreadedRequest("res://art/bugdex/textures/ActiveDay.tres");
+		int index = 0;
+        foreach (Dictionary bug in bugArray)
+		{
+			BugDexEntry newEntry = BugDexEntryNode.Instantiate<BugDexEntry>();
+			newEntry.BugName = newEntry.Name = (string)bug["name"];
+			newEntry.Species = (string)bug["species"];
+			newEntry.Description = (string)bug["description"];
+			newEntry.ActiveSchedule = Enum.Parse<BugSchedule>((string)bug["schedule"]);
+			newEntry.SpritePath = "res://art/bugdex/bugs/" + (string)bug["sprite"] + ".tres";
+            ResourceLoader.LoadThreadedRequest(newEntry.SpritePath);
+			newEntry.SetMeta("index", index++);
+			GD.Print(newEntry.BugName);
+			BugDexEntries.Add(newEntry);
+		}
     }
 
-    public string Name;
-	public string Species;
-	public string Description;
-	public Sprite2D Sprite;
-	public BugActiveTimes ActiveTimes;
-	public BugCaughtStatus CaughtStatus;
-	public int TimesCaught;
+    public override void _Ready()
+    {
+		bugInfo = GetNode<TabContainer>("%BugInfo");
+		bugSelector = GetNode<VBoxContainer>("%BugSelector");
+		Texture2D bugTexture = (Texture2D)ResourceLoader.LoadThreadedGet("res://art/bugdex/textures/ActiveDay.tres");
+		ButtonGroup bugButtons = new();
+        foreach (BugDexEntry entry in BugDexEntries)
+		{
+			Button bugButton = new()
+			{
+				Text = entry.BugName,
+				Alignment = HorizontalAlignment.Right,
+				ToggleMode = true,
+				ButtonGroup = bugButtons
+			};
+			entry.Sprite = (Texture2D)ResourceLoader.LoadThreadedGet(entry.SpritePath);
+            GD.Print(entry.Sprite.ResourceName);
+			bugButton.Connect("pressed", Callable.From(() => bugInfo.CurrentTab = (int)entry.GetMeta("index")));
+			bugSelector.AddChild(bugButton);
+			bugInfo.AddChild(entry);
+        }
+    }
+
+    public override void _Process(double delta)
+	{
+	}
+
+	private void SelectBug(int index)
+	{
+		bugInfo.CurrentTab = index;
+	}
 }

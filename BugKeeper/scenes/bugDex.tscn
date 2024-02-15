@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://baw0macsmuklc"]
+
+[ext_resource type="Script" path="res://scripts/BugDex.cs" id="1_2akw5"]
+[ext_resource type="Theme" uid="uid://bhprq1njjsmhy" path="res://ui/themes/BugDexTheme.tres" id="2_gop42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfn3h"]
+
+[sub_resource type="Theme" id="Theme_j86xm"]
+Button/constants/h_separation = 10
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_qfn3h")
+
+[node name="BugDex" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_j86xm")
+script = ExtResource("1_2akw5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 250
+dragger_visibility = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_gop42")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/HSplitContainer/PanelContainer"]
+layout_direction = 3
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BugSelector" type="VBoxContainer" parent="MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_gop42")
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/HSplitContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gop42")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/HSplitContainer/Control/PanelContainer"]
+layout_mode = 2
+
+[node name="BugInfo" type="TabContainer" parent="MarginContainer/HBoxContainer/HSplitContainer/Control/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tabs_visible = false
+tab_focus_mode = 0

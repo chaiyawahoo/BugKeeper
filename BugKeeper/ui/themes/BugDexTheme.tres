@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bhprq1njjsmhy"]
+
+[ext_resource type="StyleBox" uid="uid://doppo3rop0qgq" path="res://ui/themes/styleboxes/BGLight.tres" id="1_2ge83"]
+[ext_resource type="FontFile" uid="uid://b1nwfo7yep0mm" path="res://ui/fonts/dogica/OTF/dogicapixelbold.otf" id="1_idg6l"]
+[ext_resource type="FontFile" uid="uid://evx4y57tpsvl" path="res://ui/fonts/dogica/OTF/dogicapixel.otf" id="2_hu3wh"]
+[ext_resource type="StyleBox" uid="uid://deuifdx1c2ojk" path="res://ui/themes/styleboxes/buttons/ButtonDark.tres" id="3_dh22h"]
+[ext_resource type="StyleBox" uid="uid://cxcveg2jskrja" path="res://ui/themes/styleboxes/buttons/ButtonMedium.tres" id="4_wu4tw"]
+[ext_resource type="StyleBox" uid="uid://s0e35yu3g011" path="res://ui/themes/styleboxes/buttons/ButtonDarker.tres" id="5_qgbij"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r31um"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfn3h"]
+
+[resource]
+default_font = ExtResource("2_hu3wh")
+default_font_size = 16
+Button/colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_focus_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_hover_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 14
+Button/fonts/font = ExtResource("1_idg6l")
+Button/styles/focus = SubResource("StyleBoxEmpty_r31um")
+Button/styles/hover = ExtResource("3_dh22h")
+Button/styles/normal = ExtResource("4_wu4tw")
+Button/styles/pressed = ExtResource("5_qgbij")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+Panel/styles/panel = ExtResource("1_2ge83")
+PanelContainer/styles/panel = ExtResource("1_2ge83")
+RichTextLabel/colors/default_color = Color(0.133333, 0.133333, 0.133333, 1)
+RichTextLabel/constants/line_separation = 4
+RichTextLabel/fonts/bold_font = ExtResource("1_idg6l")
+RichTextLabel/fonts/normal_font = ExtResource("2_hu3wh")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_qfn3h")

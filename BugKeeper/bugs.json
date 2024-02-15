@@ -1,0 +1,36 @@
+{
+  "bugs": {
+	"ants": [
+	  {
+		"name": "Little Black Ant",
+		"species": "Monomorium minimum",
+		"schedule": "Nocturnal",
+		"description": "Little black ants are also known as black pharaoh ants!",
+		"sprite": "grounded/grounded3"
+	  },
+	  {
+		"name": "Fire Ant",
+		"species": "Solenopsis invicta",
+		"schedule": "Crepuscular",
+		"description": "Fire ants are an invasive species, and they are also called red imported fire ants (RIFA).",
+		"sprite": "grounded/grounded9"
+	  }
+	],
+	"spiders": [
+	  {
+		"name": "Black Widow Spider",
+		"species": "Latrodectus hesperus",
+		"schedule": "Nocturnal",
+		"description": "Western black widow spiders are considered to be the most venomous spider in North America, but their bites are not commonly fatal.",
+		"sprite": "spiders/spiders14"
+	  },
+	  {
+		"name": "Yellow Garden Spider",
+		"species": "Argiope auranita",
+		"schedule": "Nocturnal",
+		"description": "Yellow garden spiders are a species of orb-weaver spiders, due to their circular webs.",
+		"sprite": "spiders/spiders11"
+	  }
+	]
+  }
+}
