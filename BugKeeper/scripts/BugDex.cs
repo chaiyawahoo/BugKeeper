@@ -19,11 +19,15 @@ public partial class BugDex : Control
 
         string bugJson = FileAccess.GetFileAsString("res://bugs.json");
 		Dictionary bugData = (Dictionary)Json.ParseString(bugJson);
-		Dictionary bugTypes = (Dictionary)bugData["bugs"];
-		Array ants = (Array)bugTypes["ants"];
-		Array spiders = (Array)bugTypes["spiders"];
-		Array bugArray = new Array();
-		bugArray += ants + spiders;
+        Godot.Collections.Dictionary<string, Array> bugTypes = (Godot.Collections.Dictionary<string, Array>)bugData["bugs"];
+        Array bugArray = new Array();
+        foreach ((string key, Array value) in bugTypes)
+		{
+			bugArray += value;
+		}
+		//Array ants = (Array)bugTypes["ants"];
+		//Array spiders = (Array)bugTypes["spiders"];
+		//bugArray += ants + spiders;
         ResourceLoader.LoadThreadedRequest("res://art/bugdex/textures/ActiveDay.tres");
 		int index = 0;
         foreach (Dictionary bug in bugArray)

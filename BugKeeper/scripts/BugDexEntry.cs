@@ -88,6 +88,7 @@ public partial class BugDexEntry : Control
         TimesCaught = 0;
         GetNode<TextureRect>("%BugSprite").Texture = Sprite;
         GetNode<Label>("%BugName").Text = BugName;
+        GetNode<Label>("%ScheduleLabel").Text = "(" + ActiveSchedule + ")";
         GetNode<Label>("%BugSpecies").Text = Species;
         GetNode<RichTextLabel>("%Description").Text = Description;
         for (int i = 0; i < 4; i++)
