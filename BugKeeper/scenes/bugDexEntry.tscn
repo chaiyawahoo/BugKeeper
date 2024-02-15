@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rroa35atcmbe"]
+[gd_scene load_steps=9 format=3 uid="uid://rroa35atcmbe"]
 
 [ext_resource type="Script" path="res://scripts/BugDexEntry.cs" id="1_a17ey"]
 [ext_resource type="Texture2D" uid="uid://baw3u0g32a88t" path="res://art/bugdex/textures/ActiveMorning.tres" id="2_kwat1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d3o7ntk4moybh" path="res://art/bugdex/textures/ActiveNight.tres" id="5_2erdd"]
 [ext_resource type="Theme" uid="uid://bhprq1njjsmhy" path="res://ui/themes/BugDexTheme.tres" id="6_lfs0n"]
 [ext_resource type="StyleBox" uid="uid://boi75i8gbt6wl" path="res://ui/themes/styleboxes/BGMedium.tres" id="7_6yy1y"]
+[ext_resource type="Texture2D" uid="uid://cbkj8rovcol4d" path="res://art/bugdex/bugs/grounded/grounded1.tres" id="8_5ca4c"]
 
 [node name="BugDexEntry" type="VBoxContainer"]
 anchors_preset = 15
@@ -34,10 +35,11 @@ fit_content = true
 [node name="BugSpecies" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("6_lfs0n")
 bbcode_enabled = true
 text = "[i]Bug Species[/i]"
-fit_content = true
+scroll_active = false
 autowrap_mode = 2
 custom_effects = [null]
 
@@ -84,11 +86,16 @@ stretch_mode = 4
 layout_mode = 2
 alignment = 2
 
-[node name="BugSprite" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_lfs0n")
+theme_override_styles/panel = ExtResource("7_6yy1y")
+
+[node name="BugSprite" type="TextureRect" parent="HBoxContainer/HBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_direction = 3
 layout_mode = 2
-texture = ExtResource("3_2a7s2")
+texture = ExtResource("8_5ca4c")
 expand_mode = 2
 stretch_mode = 4
 
