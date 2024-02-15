@@ -56,6 +56,8 @@ public partial class BugDexEntry : Control
     [Export]
     public BugCaughtStatus CaughtStatus;
 
+    public string SpritePath;
+
     public int TimesCaught;
 
     private Control bugScheduleIcons;

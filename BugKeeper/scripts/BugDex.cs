@@ -33,22 +33,12 @@ public partial class BugDex : Control
 			newEntry.Species = (string)bug["species"];
 			newEntry.Description = (string)bug["description"];
 			newEntry.ActiveSchedule = Enum.Parse<BugSchedule>((string)bug["schedule"]);
+			newEntry.SpritePath = "res://art/bugdex/bugs/" + (string)bug["sprite"] + ".tres";
+            ResourceLoader.LoadThreadedRequest(newEntry.SpritePath);
 			newEntry.SetMeta("index", index++);
 			GD.Print(newEntry.BugName);
 			BugDexEntries.Add(newEntry);
 		}
-		//for (int i = 0; i < 16; i++)
-		//{
-  //          BugDexEntry newEntryNode = BugDexEntryNode.Instantiate<BugDexEntry>();
-		//	newEntryNode.BugName = (BugSchedule)i + " Bug";
-		//	newEntryNode.Name = newEntryNode.BugName;
-		//	newEntryNode.Species = "Buggus Specius (" + (BugSchedule)i + ")";
-		//	newEntryNode.Description = "This bug's schedule can be described with a word: " + (BugSchedule)i;
-		//	newEntryNode.ActiveSchedule = (BugSchedule)i;
-		//	ResourceLoader.LoadThreadedRequest("res://art/bugdex/textures/ActiveDay.tres");
-		//	newEntryNode.SetMeta("index", i);
-  //          BugDexEntries.Add(newEntryNode);
-  //      }
     }
 
     public override void _Ready()
@@ -56,18 +46,22 @@ public partial class BugDex : Control
 		bugInfo = GetNode<TabContainer>("%BugInfo");
 		bugSelector = GetNode<VBoxContainer>("%BugSelector");
 		Texture2D bugTexture = (Texture2D)ResourceLoader.LoadThreadedGet("res://art/bugdex/textures/ActiveDay.tres");
+		ButtonGroup bugButtons = new();
         foreach (BugDexEntry entry in BugDexEntries)
 		{
 			Button bugButton = new()
 			{
-				Text = entry.BugName
+				Text = entry.BugName,
+				Alignment = HorizontalAlignment.Right,
+				ToggleMode = true,
+				ButtonGroup = bugButtons
 			};
-			entry.Sprite = bugTexture;
+			entry.Sprite = (Texture2D)ResourceLoader.LoadThreadedGet(entry.SpritePath);
             GD.Print(entry.Sprite.ResourceName);
 			bugButton.Connect("pressed", Callable.From(() => bugInfo.CurrentTab = (int)entry.GetMeta("index")));
 			bugSelector.AddChild(bugButton);
 			bugInfo.AddChild(entry);
-		}
+        }
     }
 
     public override void _Process(double delta)
