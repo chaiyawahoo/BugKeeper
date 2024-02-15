@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cmx4cmtw0auw7"]
+
+[ext_resource type="Texture2D" uid="uid://bqx5pb3533csu" path="res://art/bugdex/png/Bugs.png" id="1_by0rf"]
+
+[resource]
+atlas = ExtResource("1_by0rf")
+region = Rect2(160, 128, 32, 32)

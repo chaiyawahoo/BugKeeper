@@ -1,7 +1,7 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://trwsyg6dopyt"]
 
-[ext_resource type="Texture2D" uid="uid://cn8abntmhbf4l" path="res://art/bugdex/png/BugScheduleIcons.png" id="1_6f53p"]
+[ext_resource type="Texture2D" uid="uid://bjb42e8nb2578" path="res://art/bugdex/png/BugScheduleIcons.png" id="1_rrgai"]
 
 [resource]
-atlas = ExtResource("1_6f53p")
+atlas = ExtResource("1_rrgai")
 region = Rect2(48, 16, 16, 16)

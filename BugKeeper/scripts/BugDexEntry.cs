@@ -33,8 +33,7 @@ public enum BugSchedule
     Party = Morning | Night,
     Worker = Day | Evening,
 
-    Always = Morning | Day | Evening | Night,
-    Cathemeral = Always
+    Cathemeral = Morning | Day | Evening | Night
 }
 
 public partial class BugDexEntry : Control
